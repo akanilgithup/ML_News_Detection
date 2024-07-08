@@ -1,6 +1,6 @@
 import pandas as pd
 
-df = pd.read_json("E:/Projects/Machine learning/News Detection/news.json" , lines=True)
+df = pd.read_json("News Detection/news.json" , lines=True)
 df = df[df.category.isin(["POLITICS","ENTERTAINMENT" ,"COMEDY"])]
 corpus = df["headline"]
 target = df["category"]
