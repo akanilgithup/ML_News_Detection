@@ -1,4 +1,7 @@
 import pandas as pd
+from nltk.corpus import stopwords
+import regex as re
+from textblob.classifiers import NaiveBayesClassifier
 
 df = pd.read_json("News Detection/news.json" , lines=True)
 df = df[df.category.isin(["POLITICS","ENTERTAINMENT" ,"COMEDY"])]
@@ -9,8 +12,6 @@ corpus.value_counts()
 
 #Data Cleaning
 
-import regex as re
-from nltk.corpus import stopwords
 sw = stopwords.words("English")
 
 def text_cleaning(doc):
@@ -29,7 +30,6 @@ for i in zip(final_corpus,target):
     train_set.append(i)
 
 print(train_set)
-from textblob.classifiers import NaiveBayesClassifier
 
 model = NaiveBayesClassifier(train_set)
 
